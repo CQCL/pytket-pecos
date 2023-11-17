@@ -9,6 +9,7 @@ readme = "README.md"
 license = {file = "LICENSE"}
 classifiers = ["License :: OSI Approved :: Apache Software License"]
 dynamic = ["version", "description"]
+dependencies = ["pytket >= 1.21.0,<2", "pytket-phir", "quantum-pecos"]
 
 [project.urls]
 Home = "https://github.com/CQCL/pytket-pecos"
