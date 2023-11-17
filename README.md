@@ -39,3 +39,11 @@ pip install -e ../PECOS/
 
 flit install
 ```
+
+## Testing
+
+To run the unit tests:
+
+```shell
+python -m unittest test.test_emulator
+```
