@@ -1,6 +1,6 @@
 import unittest
 
-from pecos.error_models.generic_error_model import GenericErrorModel
+from pecos.error_models.generic_error_model import GenericErrorModel  # type: ignore
 from pytket.circuit import Circuit
 from pytket_pecos import Emulator
 
