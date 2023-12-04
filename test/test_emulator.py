@@ -40,6 +40,19 @@ class TestEmulator(unittest.TestCase):
         self.assertTrue(len(vals) == n_shots)
         self.assertTrue(len([(c0, c1) for (c0, c1) in vals if c0 == c1]) == 88)
 
+    def test_multi_reg(self):
+        c = Circuit()
+        q0 = c.add_q_register("q0", 2)
+        q1 = c.add_q_register("q1", 2)
+        c0 = c.add_c_register("c0", 2)
+        c1 = c.add_c_register("c1", 2)
+        c.H(q0[0]).CX(q0[0], q0[1]).Measure(q0[0], c0[0]).Measure(q0[1], c0[1])
+        c.H(q1[0]).CX(q1[0], q1[1]).Measure(q1[0], c1[0]).Measure(q1[1], c1[1])
+        emu = Emulator(c)
+        results = emu.run(n_shots=20)
+        self.assertTrue(all(m0 == m1 for m0, m1 in results["c0"]))
+        self.assertTrue(all(m0 == m1 for m0, m1 in results["c1"]))
+
 
 if __name__ == "__main__":
     unittest.main()
