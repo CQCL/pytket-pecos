@@ -11,10 +11,8 @@ class TestEmulator(unittest.TestCase):
         emu = Emulator(c)
         n_shots = 20
         results = emu.run(n_shots=n_shots)
-        self.assertTrue(list(results.keys()) == ["c"])
-        vals = results["c"]
-        self.assertTrue(len(vals) == n_shots)
-        self.assertTrue(all(c0 == c1 for (c0, c1) in vals))
+        self.assertTrue(results.n_outcomes == n_shots)
+        self.assertTrue(all(n in [0, 3] for n in results.to_intlist()))
 
     def test_bell_with_noise(self):
         c = Circuit(2).H(0).CX(0, 1).measure_all()
@@ -35,10 +33,8 @@ class TestEmulator(unittest.TestCase):
         emu = Emulator(c, error_model=error_model, seed=7)
         n_shots = 100
         results = emu.run(n_shots=n_shots)
-        self.assertTrue(list(results.keys()) == ["c"])
-        vals = results["c"]
-        self.assertTrue(len(vals) == n_shots)
-        self.assertTrue(len([(c0, c1) for (c0, c1) in vals if c0 == c1]) == 88)
+        self.assertTrue(results.n_outcomes == n_shots)
+        self.assertTrue(sum(n in [0, 3] for n in results.to_intlist()) == 88)
 
     def test_multi_reg(self):
         c = Circuit()
@@ -50,8 +46,7 @@ class TestEmulator(unittest.TestCase):
         c.H(q1[0]).CX(q1[0], q1[1]).Measure(q1[0], c1[0]).Measure(q1[1], c1[1])
         emu = Emulator(c)
         results = emu.run(n_shots=20)
-        self.assertTrue(all(m0 == m1 for m0, m1 in results["c0"]))
-        self.assertTrue(all(m0 == m1 for m0, m1 in results["c1"]))
+        self.assertTrue(all(n in [0, 3, 12, 15] for n in results.to_intlist()))
 
 
 if __name__ == "__main__":
