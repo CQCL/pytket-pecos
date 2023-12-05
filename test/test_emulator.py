@@ -48,6 +48,13 @@ class TestEmulator(unittest.TestCase):
         results = emu.run(n_shots=20)
         self.assertTrue(all(n in [0, 3, 12, 15] for n in results.to_intlist()))
 
+    def test_phasedx(self):
+        c = Circuit(1).PhasedX(0.5, 0.5, 0).measure_all()
+        emu = Emulator(c, qsim="state-vector")
+        n_shots = 10
+        results = emu.run(n_shots=n_shots)
+        self.assertTrue(results.n_outcomes == n_shots)
+
 
 if __name__ == "__main__":
     unittest.main()

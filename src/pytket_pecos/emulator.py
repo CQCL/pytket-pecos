@@ -21,13 +21,14 @@ class Emulator:
         self,
         circuit: Circuit,
         error_model: Optional[ErrorModel] = None,
+        qsim: str = "stabilizer",
         seed: Optional[int] = None,
     ):
         if (not is_reglike(circuit.qubits)) or (not is_reglike(circuit.bits)):
             raise ValueError("Circuit contains units that do not belong to a register.")
 
         self.phir = pytket_to_phir(circuit)
-        self.engine = HybridEngine(error_model=error_model)
+        self.engine = HybridEngine(qsim=qsim, error_model=error_model)
         self.engine.use_seed(seed)
 
     def run(self, n_shots) -> OutcomeArray:
