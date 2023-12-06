@@ -8,6 +8,12 @@ circuits using the [PECOS](https://github.com/CQCL/PECOS) emulator.
 Installation requires Python 3.10 or 3.11. Linux, MacOS and Windows are all
 supported.
 
+### From pypi
+
+```shell
+pip install pytket_pecos
+```
+
 ### From source
 
 ```shell
