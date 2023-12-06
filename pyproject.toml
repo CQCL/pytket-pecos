@@ -4,7 +4,7 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "pytket_pecos"
-version = "0.1.0"
+version = "0.1.1"
 description = "This package enables emulation of [pytket](https://github.com/CQCL/tket) circuits using the [PECOS](https://github.com/CQCL/PECOS) emulator."
 authors = [{name = "Alec Edgington", email = "alec.edgington@quantinuum.com"}]
 license = {file = "LICENSE"}
