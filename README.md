@@ -5,16 +5,10 @@ circuits using the [PECOS](https://github.com/CQCL/PECOS) emulator.
 
 ## Installation
 
-This package depends on a version of `quantum-pecos` that is not on PyPI,
-so this must be installed manually from its repository. In full detail:
-
 ```shell
 
-# Clone the PECOS and pytket-pecos repos and checkout the `development` branch
-# of PECOS:
+# Clone the pytket-pecos repo:
 
-git clone git@github.com:PECOS-packages/PECOS.git
-git -C PECOS checkout development
 git clone git@github.com:CQCL/pytket-pecos.git
 
 # Set up the virtual environment
@@ -22,12 +16,7 @@ git clone git@github.com:CQCL/pytket-pecos.git
 cd pytket-pecos
 python -m venv env
 . env/bin/activate
-pip install -U pip setuptools flit
-
-# Install quantum-pecos:
-
-pip install -r ../PECOS/requirements.txt
-pip install -e ../PECOS/
+pip install -U pip flit wheel
 
 # Install pytket-pecos
 
