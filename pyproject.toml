@@ -8,8 +8,20 @@ version = "0.1.1"
 description = "This package enables emulation of [pytket](https://github.com/CQCL/tket) circuits using the [PECOS](https://github.com/CQCL/PECOS) emulator."
 authors = [{name = "Alec Edgington", email = "alec.edgington@quantinuum.com"}]
 license = {file = "LICENSE"}
-classifiers = ["License :: OSI Approved :: Apache Software License"]
-dependencies = ["pytket >= 1.21.0,<2", "pytket-phir >= 0.1.1", "projectq >= 0.8.0", "quantum-pecos >= 0.5.dev2"]
+classifiers = [
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows"
+    ]
+dependencies = [
+    "pytket >= 1.21.0,<2",
+    "pytket-phir >= 0.1.1",
+    "projectq >= 0.8.0",
+    "quantum-pecos >= 0.5.dev2"
+    ]
 
 [project.urls]
 Home = "https://github.com/CQCL/pytket-pecos"
