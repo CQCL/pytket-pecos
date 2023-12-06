@@ -1,5 +1,7 @@
 """Emulation of pytket circuits using PECOS"""
 
-__version__ = "0.1.0"
+from importlib import metadata
+
+__version__ = metadata.version("pytket_pecos")
 
 from .emulator import Emulator
