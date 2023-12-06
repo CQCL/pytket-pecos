@@ -20,7 +20,7 @@ jobs:
     - name: Set up python
       uses: actions/setup-python@v4
       with:
-        python-version: ${{ pyver }}
+        python-version: ${{ matrix.pyver }}
     - name: Install
       run: |
         pip install -U pip flit wheel
