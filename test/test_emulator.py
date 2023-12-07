@@ -62,6 +62,14 @@ class TestEmulator(unittest.TestCase):
         results = emu.run(n_shots=n_shots)
         self.assertTrue(results.to_intlist() == [2] * n_shots)
 
+    def test_conditional(self):
+        c = Circuit(2, 2).H(0).Measure(0, 0)
+        c.X(1, condition_bits=[0], condition_value=1).Measure(1, 1)
+        emu = Emulator(c)
+        n_shots = 10
+        results = emu.run(n_shots=n_shots)
+        self.assertTrue(all(n in [0, 3] for n in results.to_intlist()))
+
 
 if __name__ == "__main__":
     unittest.main()
