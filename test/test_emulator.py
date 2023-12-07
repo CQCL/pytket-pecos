@@ -55,6 +55,13 @@ class TestEmulator(unittest.TestCase):
         results = emu.run(n_shots=n_shots)
         self.assertTrue(results.n_outcomes == n_shots)
 
+    def test_results_order(self):
+        c = Circuit(2).X(0).measure_all()
+        emu = Emulator(c)
+        n_shots = 10
+        results = emu.run(n_shots=n_shots)
+        self.assertTrue(results.to_intlist() == [2] * n_shots)
+
 
 if __name__ == "__main__":
     unittest.main()
