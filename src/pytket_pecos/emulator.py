@@ -38,6 +38,6 @@ class Emulator:
         for i in range(n_shots):
             readout = []
             for c_reg in c_regs:
-                readout.extend(map(int, results[c_reg][i]))
+                readout.extend(reversed(list(map(int, results[c_reg][i]))))
             readouts.append(readout)
         return OutcomeArray.from_readouts(readouts)
