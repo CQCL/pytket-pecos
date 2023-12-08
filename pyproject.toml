@@ -20,7 +20,7 @@ dependencies = [
     "pytket >= 1.21.0,<2",
     "pytket-phir >= 0.1.2",
     "projectq >= 0.8.0",
-    "quantum-pecos >= 0.5.dev2"
+    "quantum-pecos >= 0.5.dev3"
     ]
 
 [project.urls]
