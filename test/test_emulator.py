@@ -70,6 +70,17 @@ class TestEmulator(unittest.TestCase):
         results = emu.run(n_shots=n_shots)
         self.assertTrue(all(n in [0, 3] for n in results.to_intlist()))
 
+    def test_setbits(self):
+        # https://github.com/CQCL/pytket-pecos/issues/9
+        c = Circuit(1)
+        a = c.add_c_register("a", 3)
+        b = c.add_c_register("b", 3)
+        c.add_c_setbits([True, True, False], a)
+        c.add_c_copyreg(a, b)
+        emu = Emulator(c)
+        result = emu.run(n_shots=1).to_intlist()[0]
+        assert result == 0b110110
+
 
 if __name__ == "__main__":
     unittest.main()
