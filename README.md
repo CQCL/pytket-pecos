@@ -6,8 +6,8 @@ circuits using the
 
 ## Installation
 
-Installation requires Python 3.10 or 3.11. Linux, MacOS and Windows are all
-supported.
+Installation requires Python 3.10, 3.11 or 3.12. Linux, MacOS and Windows are
+all supported.
 
 ### From pypi
 
