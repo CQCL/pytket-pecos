@@ -1,7 +1,9 @@
+from pathlib import Path
 import unittest
 
 from pecos.error_models.generic_error_model import GenericErrorModel  # type: ignore
-from pytket.circuit import Circuit
+from pytket.circuit import Circuit, Qubit
+from pytket.wasm import WasmFileHandler
 from pytket_pecos import Emulator
 
 
@@ -80,6 +82,18 @@ class TestEmulator(unittest.TestCase):
         emu = Emulator(c)
         result = emu.run(n_shots=1).to_intlist()[0]
         assert result == 0b110110
+
+    def test_wasm(self):
+        wasmfile = WasmFileHandler(str(Path(__file__).parent / "wasm" / "add1.wasm"))
+        c = Circuit(1)
+        a = c.add_c_register("a", 8)
+        c.add_c_setreg(23, a)
+        c.add_wasm_to_reg("add_one", wasmfile, [a], [a])
+        c.X(0)
+        c.Measure(Qubit(0), a[0])
+        emu = Emulator(c, wasm=wasmfile)
+        result = emu.run(n_shots=1).to_intlist()[0]
+        assert result == 0b10011000
 
 
 if __name__ == "__main__":
