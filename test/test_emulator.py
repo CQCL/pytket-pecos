@@ -95,6 +95,14 @@ class TestEmulator(unittest.TestCase):
         result = emu.run(n_shots=1).to_intlist()[0]
         assert result == 0b10011000
 
+    def test_multithreading(self):
+        c = Circuit(2).H(0).CX(0, 1).measure_all()
+        emu = Emulator(c)
+        n_shots = 1000
+        results = emu.run(n_shots=n_shots, multithreading=True)
+        self.assertTrue(results.n_outcomes == n_shots)
+        self.assertTrue(all(n in [0, 3] for n in results.to_intlist()))
+
 
 if __name__ == "__main__":
     unittest.main()
