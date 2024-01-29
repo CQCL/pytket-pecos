@@ -35,10 +35,9 @@ class Emulator:
         self.engine = HybridEngine(qsim=qsim, error_model=error_model)
         self.engine.use_seed(seed)
 
-    def run(self, n_shots) -> OutcomeArray:
-        results = self.engine.run(
-            self.phir, foreign_object=self.foreign_object, shots=n_shots
-        )
+    def run(self, n_shots, multithreading=False) -> OutcomeArray:
+        runner = self.engine.run_multisim if multithreading else self.engine.run
+        results = runner(self.phir, foreign_object=self.foreign_object, shots=n_shots)
         c_regs = sorted(results.keys())
         readouts = []
         for i in range(n_shots):
