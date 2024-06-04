@@ -4,7 +4,7 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "pytket_pecos"
-version = "0.1.26"
+version = "0.1.27"
 description = "This package enables emulation of pytket circuits using the PECOS emulator."
 authors = [{name = "Alec Edgington", email = "alec.edgington@quantinuum.com"}]
 license = {file = "LICENSE"}
@@ -20,7 +20,7 @@ classifiers = [
 dependencies = [
     "pytket >= 1.28.0",
     "pytket-phir >= 0.7.0",
-    "quantum-pecos[simulators,wasmtime] >= 0.6.0.dev1"
+    "quantum-pecos[simulators,wasmtime] >= 0.6.0.dev3"
     ]
 
 [project.urls]
