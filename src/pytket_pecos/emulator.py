@@ -6,7 +6,7 @@ from pecos.foreign_objects.wasmtime import WasmtimeObj
 from pytket.circuit import Circuit
 from pytket.phir.api import pytket_to_phir
 from pytket.utils.outcomearray import OutcomeArray
-from pytket.wasm import WasmFileHandler
+from pytket.wasm.wasm import WasmModuleHandler
 
 
 def is_reglike(units):
@@ -22,7 +22,7 @@ class Emulator:
     def __init__(
         self,
         circuit: Circuit,
-        wasm: Optional[WasmFileHandler] = None,
+        wasm: Optional[WasmModuleHandler] = None,
         error_model: Optional[ErrorModel] = None,
         qsim: str = "stabilizer",
         seed: Optional[int] = None,
@@ -31,7 +31,7 @@ class Emulator:
             raise ValueError("Circuit contains units that do not belong to a register.")
 
         self.phir = pytket_to_phir(circuit)
-        self.foreign_object = None if wasm is None else WasmtimeObj(wasm._wasm_file)
+        self.foreign_object = None if wasm is None else WasmtimeObj(wasm.bytecode())
         self.engine = HybridEngine(qsim=qsim, error_model=error_model)
         self.engine.use_seed(seed)
 
