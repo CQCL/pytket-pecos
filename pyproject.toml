@@ -18,7 +18,7 @@ classifiers = [
     "Operating System :: Microsoft :: Windows"
     ]
 dependencies = [
-    "pytket >=1.30",
+    "pytket >=1.33",
     "pytket-phir >=0.8.0",
     "quantum-pecos[simulators,wasmtime] >=0.6.0.dev3"
     ]
