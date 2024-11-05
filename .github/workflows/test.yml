@@ -10,7 +10,7 @@ jobs:
   run_tests:
     strategy:
       matrix:
-        os: ['ubuntu-22.04', 'macos-12', 'macos-13-xlarge', 'windows-2022']
+        os: ['ubuntu-latest', 'macos-latest', 'macos-13', 'windows-latest']
         pyver: ['3.10', '3.11', '3.12']
     runs-on:
       ${{ matrix.os }}
@@ -22,7 +22,9 @@ jobs:
         python-version: ${{ matrix.pyver }}
     - name: Install
       run: |
-        pip install -U pip flit wheel
+        pip install -U pip wheel
+        # flit 3.10 not working on windows
+        pip install flit==3.9.0
         flit install
     - name: Run tests
       run: python -m unittest test.test_emulator
