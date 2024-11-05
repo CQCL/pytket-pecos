@@ -13,13 +13,14 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Operating System :: POSIX :: Linux",
     "Operating System :: MacOS :: MacOS X",
     "Operating System :: Microsoft :: Windows"
     ]
 dependencies = [
     "pytket >=1.34",
-    "pytket-phir >=0.9.0",
+    "pytket-phir >=0.9.1",
     "quantum-pecos[simulators,wasmtime] >=0.6.0.dev6"
     ]
 
