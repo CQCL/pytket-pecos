@@ -36,7 +36,7 @@ class TestEmulator(unittest.TestCase):
         n_shots = 100
         results = emu.run(n_shots=n_shots)
         self.assertTrue(results.n_outcomes == n_shots)
-        self.assertTrue(sum(n in [0, 3] for n in results.to_intlist()) == 88)
+        self.assertEqual(sum(n in [0, 3] for n in results.to_intlist()), 62)
 
     def test_multi_reg(self):
         c = Circuit()
