@@ -1,9 +1,10 @@
-from pathlib import Path
 import unittest
+from pathlib import Path
 
 from pecos.error_models.generic_error_model import GenericErrorModel  # type: ignore
 from pytket.circuit import Circuit, Qubit
 from pytket.wasm import WasmFileHandler
+
 from pytket_pecos import Emulator
 
 

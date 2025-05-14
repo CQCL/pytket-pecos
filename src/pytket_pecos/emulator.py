@@ -1,5 +1,5 @@
 from collections import defaultdict
-from typing import Optional
+
 from pecos.engines.hybrid_engine import HybridEngine  # type: ignore
 from pecos.error_models.error_model_abc import ErrorModel  # type: ignore
 from pecos.foreign_objects.wasmtime import WasmtimeObj
@@ -22,10 +22,10 @@ class Emulator:
     def __init__(
         self,
         circuit: Circuit,
-        wasm: Optional[WasmModuleHandler] = None,
-        error_model: Optional[ErrorModel] = None,
+        wasm: WasmModuleHandler | None = None,
+        error_model: ErrorModel | None = None,
         qsim: str = "stabilizer",
-        seed: Optional[int] = None,
+        seed: int | None = None,
     ):
         if (not is_reglike(circuit.qubits)) or (not is_reglike(circuit.bits)):
             raise ValueError("Circuit contains units that do not belong to a register.")
