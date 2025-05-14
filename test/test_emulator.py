@@ -83,7 +83,7 @@ class TestEmulator(unittest.TestCase):
         c.add_c_copyreg(a, b)
         emu = Emulator(c)
         result = emu.run(n_shots=1).to_intlist()[0]
-        assert result == 0b110110  # noqa: PLR2004
+        assert result == 0b110110
 
     def test_wasm(self):
         wasmfile = WasmFileHandler(str(Path(__file__).parent / "wasm" / "add1.wasm"))
@@ -95,7 +95,7 @@ class TestEmulator(unittest.TestCase):
         c.Measure(Qubit(0), a[0])
         emu = Emulator(c, wasm=wasmfile)
         result = emu.run(n_shots=1).to_intlist()[0]
-        assert result == 0b10011000  # noqa: PLR2004
+        assert result == 0b10011000
 
     def test_multithreading(self):
         c = Circuit(2).H(0).CX(0, 1).measure_all()
